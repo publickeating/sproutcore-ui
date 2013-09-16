@@ -7,14 +7,14 @@
   @author Jonathan Lewis
 */
 
-SCUI.MissingWidgetView = SC.View.extend( SC.Border, {
-  
+SCUI.MissingWidgetView = SC.View.extend({
+
   // PUBLIC PROPERTIES
 
   layout: { left: 0, right: 0, top: 0, bottom: 0 },
-  
+
   message: "Widget is missing or broken. Please remove and replace this widget using the plus button in the bottom left.".loc(),
-  
+
   classNames: 'missing-widget'.w(),
 
   createChildViews: function() {

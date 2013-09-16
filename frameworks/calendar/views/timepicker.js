@@ -12,7 +12,7 @@
   @version 0.1
   @since 0.1
 */
-SCUI.TimePickerView = SCUI.ComboBoxView.extend(  
+SCUI.TimePickerView = SCUI.ComboBoxView.extend(
 /** @scope SCUI.TimePickerView.prototype */ {
   classNames: ['scui-timepicker-view'],
   step:30,
@@ -23,8 +23,6 @@ SCUI.TimePickerView = SCUI.ComboBoxView.extend(
   canDeleteValue: YES,
   disableSort: YES,
   dropDownButtonView: null,
-  nameKey: null,
-  valueKey: null,
 
   textFieldView: SC.TextFieldView.extend({
     classNames: 'scui-timepicker-text-field-view'.w(),
@@ -38,6 +36,7 @@ SCUI.TimePickerView = SCUI.ComboBoxView.extend(
       }
     }
   }),
+
   filteredObjectsDidChange: function () {
     var filteredObjects = this.get('filteredObjects');
     if (filteredObjects.length == 0) {
@@ -57,6 +56,7 @@ SCUI.TimePickerView = SCUI.ComboBoxView.extend(
     }
     this.setFromDateTime(dateTime);
   },
+
   setFromDateTime: function(dateTime) {
     var format = this.get('timeFormat'),
         newValue = null;
@@ -118,11 +118,11 @@ SCUI.TimePickerView = SCUI.ComboBoxView.extend(
         this.setIfChanged('selectedTime', dateTime);
         this.setIfChanged('value', value);
       }
-      // in IE, as soon as you the user browses through the results in the picker pane by 
-      // clicking on the scroll bar or the scroll thumb, the textfield loses focus causing 
-      // commitEditing to be called and subsequently hideList which makes for a very annoying 
-      // experience. With this change, clicking outside the pane will hide it (same as original behavior), 
-      // however, if the user directly shifts focus to another text field, then the pane 
+      // in IE, as soon as you the user browses through the results in the picker pane by
+      // clicking on the scroll bar or the scroll thumb, the textfield loses focus causing
+      // commitEditing to be called and subsequently hideList which makes for a very annoying
+      // experience. With this change, clicking outside the pane will hide it (same as original behavior),
+      // however, if the user directly shifts focus to another text field, then the pane
       // won't be removed. This behavior is still buggy but less buggy than it was before.
       if (!SC.browser.msie) {
         this.hideList();
